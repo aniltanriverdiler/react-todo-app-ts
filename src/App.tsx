@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useState } from "react";
 import "./App.css";
 import InputForm from "./components/InputForm";
@@ -28,7 +29,8 @@ function App() {
       content: newItemContent,
       done: false,
     };
-    setItems([...items, newList]);
+    console.log("Yeni item eklendi:", newList); 
+    setItems(prevItems => [...prevItems, newList]);  
     setNewItemContent("");
   };
 
@@ -43,6 +45,18 @@ function App() {
       )
     );
   };
+
+  useEffect(() => {
+    const storedItems = localStorage.getItem("todoItems");
+    if (storedItems) {
+      setItems(JSON.parse(storedItems));
+    }
+  }, []);
+
+  useEffect(() => {
+    console.log("Kaydedilen veriler", items);
+    localStorage.setItem("todoItems", JSON.stringify(items));
+  }, [items]);
 
   return (
     <>
