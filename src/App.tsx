@@ -33,7 +33,15 @@ function App() {
   };
 
   const deleteItem = (id: string) => {
-    setItems(items.filter(item => item.id !== id));
+    setItems(items.filter((item) => item.id !== id));
+  };
+
+  const updateItem = (id: string, newContent: string) => {
+    setItems((prev) =>
+      prev.map((item) =>
+        item.id === id ? { ...item, content: newContent } : item
+      )
+    );
   };
 
   return (
@@ -47,7 +55,12 @@ function App() {
           />
         </InputContainer>
         <ListContainer>
-          <TodoList items={items} toggleDone={toggleDone} deleteItem={deleteItem} />
+          <TodoList
+            items={items}
+            toggleDone={toggleDone}
+            deleteItem={deleteItem}
+            updateItem={updateItem}
+          />
         </ListContainer>
       </Container>
     </>

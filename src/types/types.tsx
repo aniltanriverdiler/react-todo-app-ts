@@ -14,10 +14,12 @@ export interface TodoItemProps {
   item: ItemsProps;
   toggleDone: (id: string) => void;
   deleteItem: (id: string) => void;
+  updateItem: (id: string, newContent: string) => void;
 }
 
 export interface TodoListProps {
   items: ItemsProps[];
   toggleDone: (id: string) => void;
   deleteItem: (id: string) => void;
+  updateItem: (id: string, newContent: string) => void;
 }
