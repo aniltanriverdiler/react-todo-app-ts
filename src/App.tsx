@@ -29,8 +29,7 @@ function App() {
       content: newItemContent,
       done: false,
     };
-    console.log("Yeni item eklendi:", newList); 
-    setItems(prevItems => [...prevItems, newList]);  
+    setItems((prevItems) => [...prevItems, newList]);
     setNewItemContent("");
   };
 
@@ -54,7 +53,6 @@ function App() {
   }, []);
 
   useEffect(() => {
-    console.log("Kaydedilen veriler", items);
     localStorage.setItem("todoItems", JSON.stringify(items));
   }, [items]);
 
