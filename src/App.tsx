@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import "./App.css";
 import InputForm from "./components/InputForm";
@@ -8,6 +8,7 @@ import type { ItemsProps } from "./types/types";
 import { nanoid } from "nanoid";
 import {
   Container,
+  Header,
   InputContainer,
   ListContainer,
 } from "./styles/StyledComponents";
@@ -15,6 +16,7 @@ import {
 function App() {
   const [items, setItems] = useState<ItemsProps[]>([]);
   const [newItemContent, setNewItemContent] = useState<string>("");
+
   const toggleDone = (id: string) => {
     setItems((prev) =>
       prev.map((item) =>
@@ -24,6 +26,8 @@ function App() {
   };
 
   const addItem = () => {
+    if (newItemContent.trim() === "") return;
+    
     const newList: ItemsProps = {
       id: nanoid(),
       content: newItemContent,
@@ -57,25 +61,29 @@ function App() {
   }, [items]);
 
   return (
-    <>
-      <Container>
-        <InputContainer>
-          <InputForm
-            newItemContent={newItemContent}
-            setNewItemContent={setNewItemContent}
-            addItem={addItem}
-          />
-        </InputContainer>
-        <ListContainer>
-          <TodoList
-            items={items}
-            toggleDone={toggleDone}
-            deleteItem={deleteItem}
-            updateItem={updateItem}
-          />
-        </ListContainer>
-      </Container>
-    </>
+    <Container>
+      <Header>
+        <h1>Tasks</h1>
+        <p>Organize your day, focus on what matters</p>
+      </Header>
+      
+      <InputContainer>
+        <InputForm
+          newItemContent={newItemContent}
+          setNewItemContent={setNewItemContent}
+          addItem={addItem}
+        />
+      </InputContainer>
+      
+      <ListContainer>
+        <TodoList
+          items={items}
+          toggleDone={toggleDone}
+          deleteItem={deleteItem}
+          updateItem={updateItem}
+        />
+      </ListContainer>
+    </Container>
   );
 }
 

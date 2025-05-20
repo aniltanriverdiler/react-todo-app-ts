@@ -1,6 +1,6 @@
 import React from "react";
 import type { TodoListProps } from "../types/types";
-import { List } from "../styles/StyledComponents";
+import { List, EmptyState } from "../styles/StyledComponents";
 import TodoItem from "./TodoItem";
 
 function TodoList({
@@ -11,16 +11,24 @@ function TodoList({
 }: TodoListProps) {
   return (
     <List>
-      <h2>TodoList</h2>
-      {items.map((item) => (
-        <TodoItem
-          key={item.id}
-          item={item}
-          toggleDone={toggleDone}
-          deleteItem={() => deleteItem(item.id)}
-          updateItem={updateItem}
-        />
-      ))}
+      <h2>Your Tasks</h2>
+      
+      {items.length === 0 ? (
+        <EmptyState>
+          <p>You have no tasks yet</p>
+          <p>Add a new task to get started</p>
+        </EmptyState>
+      ) : (
+        items.map((item) => (
+          <TodoItem
+            key={item.id}
+            item={item}
+            toggleDone={toggleDone}
+            deleteItem={() => deleteItem(item.id)}
+            updateItem={updateItem}
+          />
+        ))
+      )}
     </List>
   );
 }

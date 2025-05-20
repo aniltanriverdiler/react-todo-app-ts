@@ -1,6 +1,5 @@
 import React from "react";
-import { TextField } from "../styles/StyledComponents";
-import { Button } from "react-bootstrap";
+import { TextField, Button } from "../styles/StyledComponents";
 import type { InputFormProps } from "../types/types";
 
 function InputForm({
@@ -8,16 +7,23 @@ function InputForm({
   setNewItemContent,
   addItem,
 }: InputFormProps) {
+  const handleKeyPress = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter') {
+      addItem();
+    }
+  };
+
   return (
     <>
       <TextField
         type="text"
-        placeholder="Add a new item..."
+        placeholder="Add a new task..."
         value={newItemContent}
         onChange={(e) => setNewItemContent(e.target.value)}
+        onKeyDown={handleKeyPress}
       />
-      <Button variant="dark" onClick={addItem}>
-        Add
+      <Button onClick={addItem}>
+        Add Task
       </Button>
     </>
   );
