@@ -12,7 +12,7 @@ function TodoList({
   return (
     <List>
       <h2>Your Tasks</h2>
-      
+
       {items.length === 0 ? (
         <EmptyState>
           <p>You have no tasks yet</p>

@@ -27,7 +27,7 @@ function App() {
 
   const addItem = () => {
     if (newItemContent.trim() === "") return;
-    
+
     const newList: ItemsProps = {
       id: nanoid(),
       content: newItemContent,
@@ -63,10 +63,10 @@ function App() {
   return (
     <Container>
       <Header>
-        <h1>Tasks</h1>
-        <p>Organize your day, focus on what matters</p>
+        <h1>Focus & Conquer</h1>
+        <p>Stay on track and beat distractions to reach your goals.</p>
       </Header>
-      
+
       <InputContainer>
         <InputForm
           newItemContent={newItemContent}
@@ -74,7 +74,7 @@ function App() {
           addItem={addItem}
         />
       </InputContainer>
-      
+
       <ListContainer>
         <TodoList
           items={items}

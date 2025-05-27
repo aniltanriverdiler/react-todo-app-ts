@@ -8,7 +8,7 @@ function InputForm({
   addItem,
 }: InputFormProps) {
   const handleKeyPress = (e: React.KeyboardEvent) => {
-    if (e.key === 'Enter') {
+    if (e.key === "Enter") {
       addItem();
     }
   };
@@ -22,9 +22,7 @@ function InputForm({
         onChange={(e) => setNewItemContent(e.target.value)}
         onKeyDown={handleKeyPress}
       />
-      <Button onClick={addItem}>
-        Add Task
-      </Button>
+      <Button onClick={addItem}>Add Task</Button>
     </>
   );
 }

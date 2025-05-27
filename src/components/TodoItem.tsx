@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import type { TodoItemProps } from "../types/types";
-import { 
-  ListBox, 
-  ActionButton, 
+import {
+  ListBox,
+  ActionButton,
   TodoItemContainer,
-  ActionsContainer
+  ActionsContainer,
 } from "../styles/StyledComponents";
 
 function TodoItem({ item, toggleDone, deleteItem, updateItem }: TodoItemProps) {
@@ -24,9 +24,9 @@ function TodoItem({ item, toggleDone, deleteItem, updateItem }: TodoItemProps) {
   };
 
   const handleKeyPress = (e: React.KeyboardEvent) => {
-    if (e.key === 'Enter') {
+    if (e.key === "Enter") {
       handleSave();
-    } else if (e.key === 'Escape') {
+    } else if (e.key === "Escape") {
       handleCancel();
     }
   };
@@ -51,35 +51,23 @@ function TodoItem({ item, toggleDone, deleteItem, updateItem }: TodoItemProps) {
           <span>{item.content}</span>
         )}
       </ListBox>
-      
+
       <ActionsContainer>
         {isEditing ? (
           <>
-            <ActionButton
-              variant="success"
-              onClick={handleSave}
-            >
+            <ActionButton variant="success" onClick={handleSave}>
               Save
             </ActionButton>
-            <ActionButton
-              variant="secondary"
-              onClick={handleCancel}
-            >
+            <ActionButton variant="secondary" onClick={handleCancel}>
               Cancel
             </ActionButton>
           </>
         ) : (
-          <ActionButton 
-            variant="secondary" 
-            onClick={() => setIsEditing(true)}
-          >
+          <ActionButton variant="secondary" onClick={() => setIsEditing(true)}>
             Edit
           </ActionButton>
         )}
-        <ActionButton 
-          variant="danger" 
-          onClick={() => deleteItem(item.id)}
-        >
+        <ActionButton variant="danger" onClick={() => deleteItem(item.id)}>
           Delete
         </ActionButton>
       </ActionsContainer>
