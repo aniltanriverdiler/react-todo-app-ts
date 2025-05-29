@@ -1,4 +1,3 @@
-import React from "react";
 import type { TodoListProps } from "../types/types";
 import { List, EmptyState } from "../styles/StyledComponents";
 import TodoItem from "./TodoItem";

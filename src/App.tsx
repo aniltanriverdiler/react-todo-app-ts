@@ -1,8 +1,6 @@
-import React, { useEffect } from "react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 import InputForm from "./components/InputForm";
-import TodoItem from "./components/TodoItem";
 import TodoList from "./components/TodoList";
 import type { ItemsProps } from "./types/types";
 import { nanoid } from "nanoid";
