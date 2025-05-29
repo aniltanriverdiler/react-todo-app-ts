@@ -541,7 +541,7 @@ export const ActionButton = styled(Button)<{
         return designSystem.colors.gradientPrimary;
     }
   }};
-  color: ${(props) => designSystem.colors.text};
+  color: ${() => designSystem.colors.text};
   border: ${(props) =>
     props.variant === "secondary"
       ? `2px solid ${designSystem.colors.border}`
